@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 250
   m_ExperienceValue: 75
+  m_Speed: 2.5
 --- !u!65 &8102571772250098706
 BoxCollider:
   m_ObjectHideFlags: 0
