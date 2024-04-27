@@ -23,6 +23,7 @@ public class EnemyLife : MonoBehaviour
     void Death()
     {
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddExperience(m_ExperienceValue);
+        GameObject.FindWithTag("GameController").GetComponent<EnemySpawner>().GetScore();
         Destroy(gameObject);
     }
 }
