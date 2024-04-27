@@ -15,11 +15,7 @@ public class EnemyFastBullet : MonoBehaviour
 
     void Update()
     {
-        float moveZ = -m_Speed * Time.deltaTime;
-
-        Vector3 newPosition = transform.position + new Vector3(0, 0f, moveZ);
-
-        transform.position = newPosition;
+        transform.Translate(Vector3.forward * m_Speed * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
     {

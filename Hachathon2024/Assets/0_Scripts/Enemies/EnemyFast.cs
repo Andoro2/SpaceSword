@@ -10,12 +10,8 @@ public class EnemyFast : MonoBehaviour
     {
         InvokeRepeating("Shoot", 0f, m_ShootRate);
     }
-    void Update()
-    {
-        
-    }
     void Shoot()
     {
-        Instantiate(m_Bullet, transform.position, Quaternion.identity);
+        Instantiate(m_Bullet, transform.position, transform.Find("ShootPoint").transform.rotation);
     }
 }
