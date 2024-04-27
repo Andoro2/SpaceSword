@@ -2890,7 +2890,7 @@ MonoBehaviour:
   m_CurrentLife: 0
   m_MaxLife: 500
   m_CurrentExp: 0
-  m_Speed: 500
+  m_Speed: 1500
   xLimit: 9
   zLimitMin: 0
   zLimitMax: 12.5
