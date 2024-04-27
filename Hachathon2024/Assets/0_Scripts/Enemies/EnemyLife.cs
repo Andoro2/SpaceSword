@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
-    public float m_EnemyLife = 50f;
-    void Start()
-    {
-
-    }
+    public float m_EnemyLife = 50f,
+        m_ExperienceValue = 75f;
 
     void Update()
     {
@@ -23,6 +20,7 @@ public class EnemyLife : MonoBehaviour
     }
     void Death()
     {
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddExperience(m_ExperienceValue);
         Destroy(gameObject);
     }
 }

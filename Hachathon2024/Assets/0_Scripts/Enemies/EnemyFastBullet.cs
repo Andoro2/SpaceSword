@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class EnemyFastBullet : MonoBehaviour
 {
     public float m_Speed = 75f,
         m_LifeTime = 5f,
@@ -15,7 +15,7 @@ public class PlayerBullet : MonoBehaviour
 
     void Update()
     {
-        float moveZ = m_Speed * Time.deltaTime;
+        float moveZ = -m_Speed * Time.deltaTime;
 
         Vector3 newPosition = transform.position + new Vector3(0, 0f, moveZ);
 
@@ -23,14 +23,9 @@ public class PlayerBullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<EnemyLife>().TakeDamage(m_BulletDamage);
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("TankShield"))
-        {
-            collision.gameObject.GetComponent<EnemyTank>().TakeDamage(m_BulletDamage);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(m_BulletDamage);
             Destroy(gameObject);
         }
     }
