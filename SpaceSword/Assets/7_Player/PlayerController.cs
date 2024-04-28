@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     private Animator Anim;
+
+    public Slider m_LifeSlider, m_ExpSlider;
 
     void Start()
     {
@@ -56,6 +59,9 @@ public class PlayerController : MonoBehaviour
             BarrelRoll();
             StartCoroutine("IFrames");
         }
+
+        m_LifeSlider.value = (float)m_CurrentLife / m_MaxLife;
+        m_ExpSlider.value = (float)m_CurrentExp / 100f;
     }
     IEnumerator IFrames()
     {
@@ -93,92 +99,64 @@ public class PlayerController : MonoBehaviour
     }
     public void Shoot()
     {
-        switch(m_PlayerLevel)
+        switch (m_PlayerLevel)
         {
             case 1:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleSingle").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(true);
-                FrontDouble.SetActive(false);
-                Lateral1.SetActive(false);
-                Lateral2.SetActive(false);
+                ShootBullet("MiddleSingle");
+                SetActiveObjects(true, false, false, false);
                 break;
             case 2:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleLeft").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleRight").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(false);
-                FrontDouble.SetActive(true);
-                Lateral1.SetActive(false);
-                Lateral2.SetActive(false);
+                ShootBullet("MiddleLeft");
+                ShootBullet("MiddleRight");
+                SetActiveObjects(false, true, false, false);
                 break;
             case 3:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleSingle").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(true);
-                FrontDouble.SetActive(false);
-                Lateral1.SetActive(true);
-                Lateral2.SetActive(false);
+                ShootBullet("MiddleSingle");
+                ShootBullet("LeftTwo");
+                ShootBullet("RightTwo");
+                SetActiveObjects(true, false, true, false);
                 break;
             case 4:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleLeft").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleRight").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(false);
-                FrontDouble.SetActive(true);
-                Lateral1.SetActive(true);
-                Lateral2.SetActive(false);
+                ShootBullet("MiddleLeft");
+                ShootBullet("MiddleRight");
+                ShootBullet("LeftTwo");
+                ShootBullet("RightTwo");
+                SetActiveObjects(false, true, true, false);
                 break;
             case 5:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleSingle").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftTwo").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightTwo").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(true);
-                FrontDouble.SetActive(false);
-                Lateral1.SetActive(true);
-                Lateral2.SetActive(true);
+                ShootBullet("MiddleSingle");
+                ShootBullet("LeftOne");
+                ShootBullet("RightOne");
+                ShootBullet("LeftTwo");
+                ShootBullet("RightTwo");
+                SetActiveObjects(true, false, true, true);
                 break;
             case 6:
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleLeft").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("MiddleRight").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightOne").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("LeftTwo").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-                Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find("RightTwo").gameObject.transform.position, Quaternion.identity);
-                Bullet.transform.SetParent(m_BulletHolder.transform);
-
-                FrontCenter.SetActive(true);
-                FrontDouble.SetActive(false);
-                Lateral1.SetActive(true);
-                Lateral2.SetActive(true);
+                ShootBullet("MiddleLeft");
+                ShootBullet("MiddleRight");
+                ShootBullet("LeftOne");
+                ShootBullet("RightOne");
+                ShootBullet("LeftTwo");
+                ShootBullet("RightTwo");
+                SetActiveObjects(true, true, true, true);
+                break;
+            default:
+                SetActiveObjects(true, false, false, false);
                 break;
         }
+    }
+
+    private void ShootBullet(string bulletPoint)
+    {
+        Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find(bulletPoint).gameObject.transform.position, Quaternion.identity);
+        Bullet.transform.SetParent(m_BulletHolder.transform);
+    }
+
+    private void SetActiveObjects(bool frontCenter, bool frontDouble, bool lateral1, bool lateral2)
+    {
+        FrontCenter.SetActive(frontCenter);
+        FrontDouble.SetActive(frontDouble);
+        Lateral1.SetActive(lateral1);
+        Lateral2.SetActive(lateral2);
     }
 }
