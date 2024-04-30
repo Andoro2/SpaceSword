@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6297351767141466163}
   - component: {fileID: 430723623297813854}
   - component: {fileID: 652269777466751240}
-  - component: {fileID: 7222828335084084351}
+  - component: {fileID: 8825189878733186655}
   m_Layer: 0
   m_Name: EnemyFast
   m_TagString: Enemy
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_ShootRate: 1.5
   m_Bullet: {fileID: 4269261682055810051, guid: 47c241cf91b38f94b8690c18b4bd282a,
     type: 3}
---- !u!135 &7222828335084084351
-SphereCollider:
+--- !u!65 &8825189878733186655
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1.75, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6976886139012002347
 GameObject:

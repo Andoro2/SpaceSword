@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemyFastBullet : MonoBehaviour
 {
     public float m_Speed = 75f,
-        m_LifeTime = 5f,
         m_BulletDamage = 5f;
 
     void Start()
     {
-        Destroy(gameObject, m_LifeTime);
     }
 
     void Update()
@@ -22,6 +20,10 @@ public class EnemyFastBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(m_BulletDamage);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
             Destroy(gameObject);
         }
     }

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8401881fcb9afd34eb383fc90bbbbddc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.031163083, g: 0.009459269, b: 0.013044128, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &92585269 stripped
 GameObject:
@@ -452,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &193553493
 GameObject:
@@ -649,6 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &316251092
 GameObject:
@@ -703,6 +706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 100
   m_ExperienceValue: 25
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!4 &316251095
 Transform:
@@ -719,7 +723,7 @@ Transform:
   - {fileID: 840271967}
   - {fileID: 1488905225}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327351955
 GameObject:
@@ -807,7 +811,7 @@ Transform:
   - {fileID: 807121758}
   - {fileID: 1046304933}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
@@ -845,7 +849,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -975,7 +979,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &378739332 stripped
 Transform:
@@ -1018,7 +1022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
+  m_AnchoredPosition: {x: 200, y: -75}
   m_SizeDelta: {x: 330, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390987684
@@ -1192,7 +1196,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 4722
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -1394,6 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &482577462
 GameObject:
@@ -1591,6 +1596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!4 &581289380 stripped
 Transform:
@@ -1718,6 +1724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &626482926
 GameObject:
@@ -1977,6 +1984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!4 &807121758 stripped
 Transform:
@@ -2025,7 +2033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650, y: -50}
+  m_AnchoredPosition: {x: 650, y: -75}
   m_SizeDelta: {x: 550, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830357305
@@ -2444,6 +2452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1100076528
 GameObject:
@@ -2645,8 +2654,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2146487422}
+  - {fileID: 1481254905}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254715941
 GameObject:
@@ -2768,6 +2778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1258971965
 GameObject:
@@ -3174,6 +3185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1433613173
 GameObject:
@@ -3210,7 +3222,7 @@ Transform:
   - {fileID: 1100076529}
   - {fileID: 1988179794}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1433613175
 MonoBehaviour:
@@ -3308,6 +3320,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1481254904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481254905}
+  - component: {fileID: 1481254906}
+  m_Layer: 0
+  m_Name: LevelEnd
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481254905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481254904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1240092118}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1481254906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481254904}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50, y: 7.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1482357716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,6 +3600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1001 &1535823580
 PrefabInstance:
@@ -3865,6 +3931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1640395793
 GameObject:
@@ -3986,6 +4053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!4 &1663498981 stripped
 Transform:
@@ -4113,6 +4181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1703376799
 GameObject:
@@ -4151,8 +4220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -145}
-  m_SizeDelta: {x: 400, y: 75}
+  m_AnchoredPosition: {x: 275, y: -40}
+  m_SizeDelta: {x: 500, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1703376801
 MonoBehaviour:
@@ -4403,7 +4472,7 @@ RectTransform:
   - {fileID: 1703376800}
   - {fileID: 1986784351}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4530,6 +4599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1792865408
 GameObject:
@@ -4976,6 +5046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &1944796577
 GameObject:
@@ -5159,7 +5230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185, y: -160}
+  m_AnchoredPosition: {x: 185, y: -52.5}
   m_SizeDelta: {x: 320, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986784352
@@ -5547,6 +5618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &2089068070
 GameObject:
@@ -5668,6 +5740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyLife: 50
   m_ExperienceValue: 75
+  m_CollisionDamage: 20
   m_Speed: 25
 --- !u!1 &2102665989
 GameObject:

@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 7580686146095917679}
   - component: {fileID: 2773498657653645302}
   - component: {fileID: 5251474210499459955}
-  - component: {fileID: 9152172631277537452}
+  - component: {fileID: 3360994757866661411}
   m_Layer: 0
   m_Name: EnemyMedium
   m_TagString: Enemy
@@ -234,7 +234,7 @@ Transform:
   - {fileID: 3466266634258898147}
   - {fileID: 3198846092179423381}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2773498657653645302
 MonoBehaviour:
@@ -265,8 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootRate: 0.5
   Bullet: {fileID: 4269261682055810051, guid: 47c241cf91b38f94b8690c18b4bd282a, type: 3}
---- !u!135 &9152172631277537452
-SphereCollider:
+--- !u!65 &3360994757866661411
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -284,8 +284,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.75, y: 1.5, z: 1.75}
+  m_Center: {x: 0, y: 0, z: 0.45}
 --- !u!1 &8590203977307032508
 GameObject:
   m_ObjectHideFlags: 0
