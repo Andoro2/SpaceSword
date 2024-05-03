@@ -7,17 +7,11 @@ public class EnemyTank : MonoBehaviour
     public float m_ShieldMaxLife,
         m_ShieldLife,
         m_ShieldRecoveryValue;
-    // Start is called before the first frame update
     void Start()
     {
         m_ShieldLife = m_ShieldMaxLife;
+        transform.parent.parent.GetComponent<BoxCollider>().enabled = false;
         InvokeRepeating("ShieldRecovery", 0, 1f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     void ShieldRecovery()
     {
@@ -34,6 +28,10 @@ public class EnemyTank : MonoBehaviour
     {
         m_ShieldLife -= Dmg;
 
-        if(m_ShieldLife <= 0f) Destroy(gameObject);
+        if (m_ShieldLife <= 0f)
+        {
+            transform.parent.parent.GetComponent<BoxCollider>().enabled = true;
+            Destroy(gameObject);
+        }
     }
 }
