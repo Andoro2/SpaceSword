@@ -26,11 +26,17 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyLife>().TakeDamage(m_BulletDamage);
+            GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>().LoadUlt();
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("TankShield"))
         {
             collision.gameObject.GetComponent<EnemyTank>().TakeDamage(m_BulletDamage);
+            GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>().LoadUlt();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
             Destroy(gameObject);
         }
     }

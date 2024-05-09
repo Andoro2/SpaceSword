@@ -8,6 +8,7 @@ public class EnemyLife : MonoBehaviour
         m_ExperienceValue = 75f,
         m_CollisionDamage = 20f,
         m_Speed = 15f;
+    public GameObject m_ImpactVFX;
 
     void Update()
     {
@@ -20,6 +21,7 @@ public class EnemyLife : MonoBehaviour
     public void TakeDamage(float Damage)
     {
         m_EnemyLife -= Damage;
+        Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
     }
     void Death()
     {

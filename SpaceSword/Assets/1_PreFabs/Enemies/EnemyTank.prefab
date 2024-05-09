@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5242012195391098856}
   - component: {fileID: 1991758367389443635}
   - component: {fileID: 8102571772250098706}
+  - component: {fileID: -1238010748034354123}
   m_Layer: 0
   m_Name: EnemyTank
   m_TagString: Enemy
@@ -50,6 +51,8 @@ MonoBehaviour:
   m_ExperienceValue: 75
   m_CollisionDamage: 20
   m_Speed: 2.5
+  m_ImpactVFX: {fileID: 8925781867398088669, guid: d1ed94de21338bd489c2058bd56ef062,
+    type: 3}
 --- !u!65 &8102571772250098706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71,6 +74,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 2.5, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-1238010748034354123
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6556270172988923214}
+  serializedVersion: 4
+  m_Mass: 500
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &6694441476730650011
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +113,7 @@ GameObject:
   - component: {fileID: 3917957485857378632}
   - component: {fileID: 4033455775065147795}
   - component: {fileID: 7491203724249848867}
+  - component: {fileID: 4101366407540540495}
   - component: {fileID: 1554155897182019677}
   m_Layer: 0
   m_Name: Shield
@@ -177,6 +208,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4101366407540540495
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6694441476730650011}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &1554155897182019677
 MonoBehaviour:
   m_ObjectHideFlags: 0

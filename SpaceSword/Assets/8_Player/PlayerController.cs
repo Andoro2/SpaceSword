@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public float m_Speed = 5f,
         xLimit = 9f, zLimitMin = 0f, zLimitMax = 12.5f,
-        m_ShootingRate = 0.25f;
+        m_ShootingRate = 0.25f,
+        m_UltLoad = 0f;
 
     public GameObject m_Bullet, m_BulletHolder;
     private GameObject m_ShootPoints, Bullet,
@@ -23,7 +24,10 @@ public class PlayerController : MonoBehaviour
 
     private Animator Anim;
 
-    public Slider m_LifeSlider, m_ExpSlider;
+    public Slider m_LifeSlider, m_ExpSlider, m_UltSlider;
+    public GameObject m_UltReadyText, m_UltVFX;
+    public float m_UltDuration = 3f;
+    public GameObject m_ImpactVFX;
 
     void Start()
     {
@@ -38,6 +42,9 @@ public class PlayerController : MonoBehaviour
         InvokeRepeating("Shoot", 0, m_ShootingRate);
 
         m_CurrentLife = m_MaxLife;
+
+        m_UltReadyText.SetActive(false);
+        m_UltVFX.SetActive(false); ;
     }
     void Update()
     {
@@ -60,14 +67,30 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("IFrames");
         }
 
+        if(Input.GetKeyDown(KeyCode.Space) && m_UltLoad == 100f)
+        {
+            m_UltReadyText.SetActive(false);
+            StartCoroutine("LaunchUltimate");
+        }
+
         m_LifeSlider.value = (float)m_CurrentLife / m_MaxLife;
         m_ExpSlider.value = (float)m_CurrentExp / 100f;
+        m_UltSlider.value = m_UltLoad;
     }
-    IEnumerator IFrames()
+    public void LoadUlt()
     {
-        GetComponent<Collider>().enabled = false;  
-        yield return new WaitForSeconds(1.25f);
-        GetComponent<Collider>().enabled = true;
+        if (m_UltLoad < 100) m_UltLoad += 0.25f;
+
+        if (m_UltLoad == 100) m_UltReadyText.SetActive(true);
+    }
+    IEnumerator LaunchUltimate()
+    {
+        CancelInvoke("Shoot");
+        m_UltVFX.SetActive(true);
+        yield return new WaitForSeconds(m_UltDuration);
+        InvokeRepeating("Shoot", 0, m_ShootingRate);
+        m_UltVFX.SetActive(false);
+        m_UltLoad = 0;
     }
     public void BarrelRoll()
     {
@@ -80,9 +103,17 @@ public class PlayerController : MonoBehaviour
             Anim.SetTrigger("LeftRoll");
         }
     }
+    IEnumerator IFrames()
+    {
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(1.25f);
+        GetComponent<Collider>().enabled = true;
+    }
     public void TakeDamage(float Dmg)
     {
         m_CurrentLife -= Dmg;
+        GameObject VFX = Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
+        VFX.transform.SetParent(transform);
     }
     public void AddExperience(float Exp)
     {

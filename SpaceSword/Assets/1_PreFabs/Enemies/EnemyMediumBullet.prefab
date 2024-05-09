@@ -117,7 +117,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6250602458009258522}
   - component: {fileID: 7247200593126850159}
-  - component: {fileID: 7164968150246040193}
   - component: {fileID: 1632853227375049510}
   m_Layer: 0
   m_Name: EnemyMediumBullet
@@ -165,33 +164,6 @@ CapsuleCollider:
   m_Height: 0.75
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7164968150246040193
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4269261682055810051}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 118
-  m_CollisionDetection: 0
 --- !u!114 &1632853227375049510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,5 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 5
-  m_LifeTime: 10
   m_BulletDamage: 5
