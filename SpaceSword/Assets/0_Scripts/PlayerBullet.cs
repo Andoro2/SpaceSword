@@ -31,7 +31,7 @@ public class PlayerBullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("TankShield"))
         {
-            collision.gameObject.GetComponent<EnemyTank>().TakeDamage(m_BulletDamage);
+            collision.gameObject.GetComponent<EnemyTankShield>().TakeDamage(m_BulletDamage);
             GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>().LoadUlt();
             Destroy(gameObject);
         }

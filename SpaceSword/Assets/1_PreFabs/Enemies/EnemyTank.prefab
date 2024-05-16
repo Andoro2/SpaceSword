@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4423603665395167309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076657365030573614}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076657365030573614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423603665395167309}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5242012195391098856}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6556270172988923214
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5242012195391098856}
   - component: {fileID: 1991758367389443635}
+  - component: {fileID: 8358673522714275352}
   - component: {fileID: 8102571772250098706}
   - component: {fileID: -1238010748034354123}
   m_Layer: 0
@@ -32,6 +64,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906350084362634198}
+  - {fileID: 1076657365030573614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,6 +85,21 @@ MonoBehaviour:
   m_CollisionDamage: 20
   m_Speed: 2.5
   m_ImpactVFX: {fileID: 8925781867398088669, guid: d1ed94de21338bd489c2058bd56ef062,
+    type: 3}
+--- !u!114 &8358673522714275352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6556270172988923214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f598e537e2c3be44fb932a5fc634f9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShootRate: 7.5
+  m_Bullet: {fileID: 5150917711125611919, guid: ba8a0b923ca3ad14a985abf397072d60,
     type: 3}
 --- !u!65 &8102571772250098706
 BoxCollider:
@@ -250,6 +298,7 @@ MonoBehaviour:
   m_ShieldMaxLife: 500
   m_ShieldLife: 0
   m_ShieldRecoveryValue: 20
+  IsShield: 1
 --- !u!1 &8427247627462305282
 GameObject:
   m_ObjectHideFlags: 0
