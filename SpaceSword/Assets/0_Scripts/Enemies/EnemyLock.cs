@@ -8,21 +8,26 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyLock : MonoBehaviour
 {
     public float m_SideSpeed, m_SideLimit, m_ShootRate;
-    public bool m_Side;
+    private bool m_Side;
     public GameObject m_Bullet;
     private Transform m_Player;
     private GameObject m_Turret;
-    // Start is called before the first frame update
+    public LineRenderer m_Laser;
     void Start()
     {
         m_Player = GameObject.FindWithTag("Player").transform;
         m_Turret = transform.Find("ShootPoint").gameObject;
         InvokeRepeating("Shoot", 0f, m_ShootRate);
+
+        m_Laser.positionCount = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+        m_Laser.SetPosition(0, transform.Find("ShootPoint").transform.Find("ShootPoint").transform.position);
+        m_Laser.SetPosition(1, m_Player.position);
+
         m_Turret.transform.LookAt(m_Player);
 
         if (m_Side)

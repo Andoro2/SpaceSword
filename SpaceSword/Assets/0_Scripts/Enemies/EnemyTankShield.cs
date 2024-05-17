@@ -8,6 +8,7 @@ public class EnemyTankShield : MonoBehaviour
         m_ShieldLife,
         m_ShieldRecoveryValue;
     public bool IsShield = false;
+
     void Start()
     {
         m_ShieldLife = m_ShieldMaxLife;
