@@ -1763,9 +1763,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455552519}
-  - {fileID: 1915176489}
   - {fileID: 2023507044}
   - {fileID: 900661856}
+  - {fileID: 1915176489}
   m_Father: {fileID: 1448573640}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -4090,13 +4090,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1448573640}
+  - component: {fileID: 1448573642}
+  - component: {fileID: 1448573641}
   m_Layer: 0
   m_Name: SpaceArrow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1448573640
 Transform:
   m_ObjectHideFlags: 0
@@ -4114,6 +4116,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1448573641
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448573639}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1610e02b9b5dc6a4c82a57a870306d52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1448573642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448573639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86dfc9a66f117b45802b8ffffc20ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SideSpeed: 5
+  m_SideLimit: 12
+  m_SideRate: 0
+  m_TripleRate: 0
+  m_ArrowRate: 10
+  m_Arrow: {fileID: 1915733030}
+  m_TripleTurretLeft: {fileID: 0}
+  m_TripleTurretRight: {fileID: 0}
+  m_TripleBullet: {fileID: 0}
+  m_SideTurretLeft: {fileID: 0}
+  m_SideTurretRight: {fileID: 0}
+  m_NormalBullet: {fileID: 0}
+  m_Anim: {fileID: 1448573641}
+  m_TargetRenderer: {fileID: 0}
+  IntensityTarget: 1
+  LoadTime: 2
+  initialEmissionIntensity: 0
 --- !u!1 &1465064397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5880,6 +5932,12 @@ PrefabInstance:
 --- !u!4 &1915176489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 289fd6ccddd42f94a9ff9528013d0877,
+    type: 3}
+  m_PrefabInstance: {fileID: 1915176488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1915733030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 289fd6ccddd42f94a9ff9528013d0877,
     type: 3}
   m_PrefabInstance: {fileID: 1915176488}
   m_PrefabAsset: {fileID: 0}
