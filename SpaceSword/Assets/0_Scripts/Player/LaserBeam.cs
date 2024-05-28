@@ -27,7 +27,6 @@ public class LaserBeam : MonoBehaviour
             if (col.gameObject.CompareTag("TankShield"))
             {
                 col.gameObject.GetComponent<EnemyTankShield>().TakeDamage(m_LaserDPS);
-                Debug.Log("impakto");
             }
         }
     }

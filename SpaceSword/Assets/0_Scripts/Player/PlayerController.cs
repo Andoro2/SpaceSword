@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public Slider m_LifeSlider, m_ExpSlider, m_UltSlider;
     public GameObject m_UltReadyText, m_UltVFX;
     public float m_UltDuration = 3f;
-    public GameObject m_ImpactVFX;
+    public GameObject m_ImpactVFX, m_ExplosionVFX;
 
     void Start()
     {
@@ -114,6 +114,11 @@ public class PlayerController : MonoBehaviour
         m_CurrentLife -= Dmg;
         GameObject VFX = Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
         VFX.transform.SetParent(transform);
+
+        if(m_CurrentLife <= 0)
+        {
+            Death();
+        }
     }
     public void AddExperience(float Exp)
     {
@@ -176,18 +181,25 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
     private void ShootBullet(string bulletPoint)
     {
         Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find(bulletPoint).gameObject.transform.position, Quaternion.identity);
         Bullet.transform.SetParent(m_BulletHolder.transform);
     }
-
     private void SetActiveObjects(bool frontCenter, bool frontDouble, bool lateral1, bool lateral2)
     {
         FrontCenter.SetActive(frontCenter);
         FrontDouble.SetActive(frontDouble);
         Lateral1.SetActive(lateral1);
         Lateral2.SetActive(lateral2);
+    }
+    public void Death()
+    {
+        transform.Find("Model").gameObject.SetActive(false);
+        GameObject.FindWithTag("GameController").GetComponent<EnemySpawner>().enabled = false;
+        CancelInvoke("Shoot");
+
+        GameObject ExplosionVFX = Instantiate(m_ExplosionVFX, transform.position, Quaternion.identity);
+        ExplosionVFX.transform.localScale = new Vector3(3f,3f,3f);
     }
 }

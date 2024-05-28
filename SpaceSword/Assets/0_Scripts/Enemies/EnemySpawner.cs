@@ -32,8 +32,9 @@ public class EnemySpawner : MonoBehaviour
         GameObject Enemy;
         float EnemyChance = Random.Range(0f, 100f);
         if (EnemyChance <= 40f) Enemy = Enemies[0].gameObject;
-        else if (EnemyChance <= 80f && EnemyChance > 40f) Enemy = Enemies[1].gameObject;
-        else Enemy = Enemies[2].gameObject;  
+        else if (EnemyChance <= 70f && EnemyChance > 40f) Enemy = Enemies[1].gameObject;
+        else if (EnemyChance <= 90f && EnemyChance > 70f) Enemy = Enemies[2].gameObject;
+        else Enemy = Enemies[3].gameObject;  
 
         Instantiate(Enemy, new Vector3(Random.Range(-9f, 9f), 0f, transform.position.z), transform.rotation);
     }

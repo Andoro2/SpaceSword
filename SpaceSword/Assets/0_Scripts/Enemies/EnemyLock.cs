@@ -17,12 +17,9 @@ public class EnemyLock : MonoBehaviour
     {
         m_Player = GameObject.FindWithTag("Player").transform;
         m_Turret = transform.Find("ShootPoint").gameObject;
-        InvokeRepeating("Shoot", 0f, m_ShootRate);
 
         m_Laser.positionCount = 2;
     }
-
-    // Update is called once per frame
     void Update()
     {
         m_Laser.SetPosition(0, transform.Find("ShootPoint").transform.Find("ShootPoint").transform.position);
@@ -51,5 +48,11 @@ public class EnemyLock : MonoBehaviour
     void Shoot()
     {
         Instantiate(m_Bullet, transform.position, m_Turret.transform.rotation);
+    }
+    void LockActivate()
+    {
+        m_Turret.transform.Find("ShootPoint").gameObject.SetActive(true);
+        GetComponent<Animator>().enabled = false;
+        InvokeRepeating("Shoot", 0f, m_ShootRate);
     }
 }

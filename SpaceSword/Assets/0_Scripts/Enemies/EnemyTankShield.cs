@@ -12,7 +12,7 @@ public class EnemyTankShield : MonoBehaviour
     void Start()
     {
         m_ShieldLife = m_ShieldMaxLife;
-        if(IsShield) transform.parent.parent.GetComponent<BoxCollider>().enabled = false;
+        //if(IsShield) transform.parent.parent.GetComponent<BoxCollider>().enabled = false;
         InvokeRepeating("ShieldRecovery", 0, 1f);
     }
     void ShieldRecovery()
@@ -36,4 +36,11 @@ public class EnemyTankShield : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Destroy(gameObject.transform.parent);
+        }
+    }*/
 }
