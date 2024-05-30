@@ -37,40 +37,6 @@ public class EnemySpawner : MonoBehaviour
         {
             if (m_EnemyIndex < Enemies.Count)
             {
-                //SpawnFoe();
-
-                /*GameObject Enemy = EnemyTypes[0];
-                switch (Enemies[m_EnemyIndex].EnemyType)
-                {
-                    case EnemyStats.EnemyTypes.Fast:
-                        {
-                            Enemy = EnemyTypes[0];
-                            break;
-                        }
-
-                    case EnemyStats.EnemyTypes.Medium:
-                        {
-                            Enemy = EnemyTypes[1];
-                            break;
-                        }
-                    case EnemyStats.EnemyTypes.Tank:
-                        {
-                            Enemy = EnemyTypes[2];
-                            break;
-                        }
-                    case EnemyStats.EnemyTypes.Lock:
-                        {
-                            Enemy = EnemyTypes[3];
-                            break;
-                        }
-                    default:
-                        {
-                            Enemy = EnemyTypes[3];
-                            break;
-                        }
-                }*/
-
-                //GameObject SpawnedEnemy = Instantiate(Enemy, new Vector3(Random.Range(-9f, 9f), 0f, transform.position.z), transform.rotation);
                 Enemies[m_EnemyIndex].m_Enemy.SetActive(true);
                 Enemies[m_EnemyIndex].Spawned = true;
                 Enemies[m_EnemyIndex].m_Enemy.GetComponent<EnemyLife>().Route = Enemies[m_EnemyIndex].RoutePos;
@@ -82,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
                     m_EnemySpawnTimer = Enemies[m_EnemyIndex].Delay;
                 }
             }
-            else if (AreActiveEnemiesPresent())
+            else if (AreActiveEnemiesPresent() && SpaceArrow != null)
             {
                 SpaceArrow.SetActive(true);
             }
@@ -93,27 +59,16 @@ public class EnemySpawner : MonoBehaviour
     }
     bool AreActiveEnemiesPresent()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        GameObject[] m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in m_Enemies)
         {
             if (enemy.activeInHierarchy)
             {
-                return false; // Hay al menos un enemigo activo
+                return false;
             }
         }
-        return true; // No hay enemigos activos
+        return true;
     }
-    /*void SpawnFoe()
-    {
-        GameObject Enemy;
-        float EnemyChance = Random.Range(0f, 100f);
-        if (EnemyChance <= 40f) Enemy = EnemyTypes[0].gameObject;
-        else if (EnemyChance <= 70f && EnemyChance > 40f) Enemy = EnemyTypes[1].gameObject;
-        else if (EnemyChance <= 90f && EnemyChance > 70f) Enemy = EnemyTypes[2].gameObject;
-        else Enemy = EnemyTypes[3].gameObject;  
-
-        Instantiate(Enemy, new Vector3(Random.Range(-9f, 9f), 0f, transform.position.z), transform.rotation);
-    }*/
     public void GetScore()
     {
         Score++;
@@ -122,12 +77,9 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyStats
     {
-        //public enum EnemyTypes { Fast, Medium, Tank, Lock }
-        //[SerializeField] public EnemyTypes EnemyType;
         public GameObject m_Enemy;
         public bool Spawned = false;
         public float Delay;
-        //public Transform m_SpawnPos;
         public List<Transform> Route = new List<Transform>();
         [HideInInspector] public List<Vector3> RoutePos = new List<Vector3>();
     }
