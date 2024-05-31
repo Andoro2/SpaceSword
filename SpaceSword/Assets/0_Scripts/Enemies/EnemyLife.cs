@@ -12,10 +12,10 @@ public class EnemyLife : MonoBehaviour
     public GameObject m_ImpactVFX;
     public int RouteIndex = 0;
     public List<Vector3> Route = new List<Vector3>();
+    public bool m_LevelBoss = false;
 
     void Update()
     {
-        //transform.Translate(Vector3.back * m_Speed * Time.deltaTime);
         if(Route.Count > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, Route[RouteIndex], m_Speed * Time.deltaTime);
@@ -36,6 +36,12 @@ public class EnemyLife : MonoBehaviour
     {
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddExperience(m_ExperienceValue);
         GameObject.FindWithTag("GameController").GetComponent<EnemySpawner>().GetScore();
+
+        if(m_LevelBoss)
+        {
+            GameObject.FindWithTag("GameController").GetComponent<GameController>().LevelPassed();
+        }
+
         Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)
@@ -43,7 +49,7 @@ public class EnemyLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(m_CollisionDamage);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
