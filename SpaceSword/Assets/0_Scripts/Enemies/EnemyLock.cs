@@ -13,12 +13,18 @@ public class EnemyLock : MonoBehaviour
     private Transform m_Player;
     private GameObject m_Turret;
     public LineRenderer m_Laser;
+
+    public AudioClip m_LockShotSFX;
+    private AudioSource m_AudioSource;
     void Start()
     {
         m_Player = GameObject.FindWithTag("Player").transform;
         m_Turret = transform.Find("ShootPoint").gameObject;
 
         m_Laser.positionCount = 2;
+
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = m_LockShotSFX;
     }
     void Update()
     {
@@ -48,6 +54,7 @@ public class EnemyLock : MonoBehaviour
     void Shoot()
     {
         Instantiate(m_Bullet, transform.position, m_Turret.transform.rotation);
+        m_AudioSource.Play();
     }
     void LockActivate()
     {

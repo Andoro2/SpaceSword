@@ -9,11 +9,15 @@ public class EnemyFast : MonoBehaviour
     public bool m_Side = false;
     private bool Routed = true, Flag = true;
 
+    public AudioClip m_LightShotSFX;
+    private AudioSource m_AudioSource;
+
     void Start()
     {
         xPosition = transform.position.x;
 
-        
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = m_LightShotSFX;
     }
     void Update()
     {
@@ -55,5 +59,6 @@ public class EnemyFast : MonoBehaviour
     void Shoot()
     {
         Instantiate(m_Bullet, transform.position, transform.Find("ShootPoint").transform.rotation);
+        m_AudioSource.Play();
     }
 }

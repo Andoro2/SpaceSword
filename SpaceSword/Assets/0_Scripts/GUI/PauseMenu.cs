@@ -7,10 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject m_PauseMenu, m_DeathMenu;
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !m_DeathMenu.activeSelf)
@@ -45,5 +41,9 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void CloseApplication()
+    {
+        Application.Quit();
     }
 }

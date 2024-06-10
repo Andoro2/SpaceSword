@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 75
   m_LifeTime: 5
-  m_BulletDamage: 5
+  m_BulletDamage: 10
 --- !u!136 &7247200593126850159
 CapsuleCollider:
   m_ObjectHideFlags: 0

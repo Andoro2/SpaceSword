@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
+using Unity.VisualScripting;
+//using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float m_UltDuration = 3f;
     public GameObject m_ImpactVFX, m_ExplosionVFX;
 
+    public AudioClip m_PlayerShotSFX;
+    private AudioSource m_AudioSource;
+
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -38,6 +42,9 @@ public class PlayerController : MonoBehaviour
         FrontDouble = Model.transform.Find("FrontDouble").gameObject;
         Lateral1 = Model.transform.Find("Lateral1").gameObject;
         Lateral2 = Model.transform.Find("Lateral2").gameObject;
+
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = m_PlayerShotSFX;
 
         InvokeRepeating("Shoot", 0, m_ShootingRate);
 
@@ -185,6 +192,7 @@ public class PlayerController : MonoBehaviour
     {
         Bullet = Instantiate(m_Bullet, m_ShootPoints.transform.Find(bulletPoint).gameObject.transform.position, Quaternion.identity);
         Bullet.transform.SetParent(m_BulletHolder.transform);
+        m_AudioSource.Play();
     }
     private void SetActiveObjects(bool frontCenter, bool frontDouble, bool lateral1, bool lateral2)
     {
@@ -201,5 +209,36 @@ public class PlayerController : MonoBehaviour
 
         GameObject ExplosionVFX = Instantiate(m_ExplosionVFX, transform.position, Quaternion.identity);
         ExplosionVFX.transform.localScale = new Vector3(3f,3f,3f);
+    }
+    public AudioClip m_ExplosionSFX1, m_ExplosionSFX2;
+
+    IEnumerator DeathExplosions()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Vector3 explosionSpawnPos = new Vector3(
+                Random.Range(transform.position.x - 0.5f, transform.position.x + 0.5f),
+                Random.Range(transform.position.y - 0.5f, transform.position.y + 0.5f),
+                Random.Range(transform.position.z - 0.5f, transform.position.z + 0.5f));
+
+            GameObject spawnedPrefab = Instantiate(m_ExplosionVFX, explosionSpawnPos, Quaternion.identity);
+
+            spawnedPrefab.transform.AddComponent<AudioSource>();
+            if (Random.Range(0, 1) == 0) spawnedPrefab.GetComponent<AudioSource>().clip = m_ExplosionSFX1;
+            else spawnedPrefab.GetComponent<AudioSource>().clip = m_ExplosionSFX2;
+
+            spawnedPrefab.GetComponent<AudioSource>().loop = false;
+            spawnedPrefab.GetComponent<AudioSource>().Play();
+
+            spawnedPrefab.SetActive(true);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        Destroy(gameObject);
+    }
+    public void StopShooting()
+    {
+        CancelInvoke("Shoot");
     }
 }
