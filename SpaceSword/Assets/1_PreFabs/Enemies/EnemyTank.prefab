@@ -91,6 +91,7 @@ MonoBehaviour:
   Route: []
   m_Enemy: 1
   m_LevelBoss: 0
+  m_Muelto: 0
   m_ExplosionAmount: 5
   m_ExplosionRate: 0.1
   m_ExplosionVFX: {fileID: 2605982728759927008, guid: 0cbb840365a8b4d4996de478575adb1c,

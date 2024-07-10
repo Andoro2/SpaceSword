@@ -10,7 +10,7 @@ public class SpaceArrow : MonoBehaviour
     public GameObject m_Arrow,
         m_TripleTurretLeft, m_TripleTurretRight, m_TripleBullet,
         m_SideTurretLeft, m_SideTurretRight, m_NormalBullet;
-    public Animator m_Anim;
+    public Animator m_Anim, m_ArrowAnim;
 
     //RingShine
     public Renderer m_TargetRenderer;
@@ -21,7 +21,6 @@ public class SpaceArrow : MonoBehaviour
     private Color baseEmissionColor;
     void Start()
     {
-
         ShineRingMaterial = m_TargetRenderer.material;
         ShineRingMaterial.EnableKeyword("_EMISSION");
         Color initialEmission = ShineRingMaterial.GetColor("_EmissionColor");
@@ -40,7 +39,7 @@ public class SpaceArrow : MonoBehaviour
             {
                 transform.Translate(Vector3.right * m_SideSpeed * Time.deltaTime);
             }
-
+            
             if (transform.position.x >= m_SideLimit)
             {
                 m_Side = true;
@@ -49,7 +48,13 @@ public class SpaceArrow : MonoBehaviour
             {
                 m_Side = false;
             }
-        }        
+        }
+        else
+        {
+            CancelInvoke("SideShot");
+            CancelInvoke("TripleShot");
+            CancelInvoke("ArrowLaunch");
+        }
     }
     public void ArrowLaunch()
     {
@@ -62,39 +67,23 @@ public class SpaceArrow : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-
             float t = elapsedTime / duration;
-
             float currentIntensity = Mathf.Lerp(initialEmissionIntensity, targetIntensity, t);
-
             Color currentEmissionColor = baseEmissionColor * Mathf.LinearToGammaSpace(currentIntensity);
-
             ShineRingMaterial.SetColor("_EmissionColor", currentEmissionColor);
-
             yield return null;
         }
 
         Color finalEmissionColor = baseEmissionColor * Mathf.LinearToGammaSpace(targetIntensity);
         ShineRingMaterial.SetColor("_EmissionColor", finalEmissionColor);
 
-        m_Anim.Play("ArrowLaunch");
+        m_ArrowAnim.SetTrigger("Launchment");
+        Debug.Log("Lanzamiento");
 
-        Color noEmissionColor = baseEmissionColor * Mathf.LinearToGammaSpace(0f);
-        ShineRingMaterial.SetColor("_EmissionColor", noEmissionColor);
-
-        yield return new WaitForSeconds(m_Anim.GetCurrentAnimatorStateInfo(0).length);
-
-        elapsedTime = 0f;
-
-        float currentIntensityZero = 0f;
-
-        Color currentEmissionColorZero = baseEmissionColor * Mathf.LinearToGammaSpace(currentIntensityZero);
-
-        ShineRingMaterial.SetColor("_EmissionColor", currentEmissionColorZero);
-
-        yield return null;
         Color initialEmissionColor = baseEmissionColor * Mathf.LinearToGammaSpace(initialEmissionIntensity);
         ShineRingMaterial.SetColor("_EmissionColor", initialEmissionColor);
+
+        yield return new WaitForSeconds(m_Anim.GetCurrentAnimatorStateInfo(0).length);
     }
     public void TripleShot()
     {

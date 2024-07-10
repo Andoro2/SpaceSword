@@ -32,8 +32,20 @@ public class EnemyLife : MonoBehaviour
     }
     public void TakeDamage(float Damage)
     {
-        m_EnemyLife -= Damage;
-        Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
+        if(transform.name == "SpaceArrow")
+        {
+            m_EnemyLife -= Damage;
+            Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
+        }
+        else if(transform.Find("Body").Find("Shield") == null)
+        {
+            m_EnemyLife -= Damage;
+            Instantiate(m_ImpactVFX, transform.position, Quaternion.identity);
+        }
+        else if (transform.Find("Body").Find("Shield").GetComponent<EnemyTankShield>().m_ShieldLife > 0)
+        {
+            transform.Find("Body").Find("Shield").GetComponent<EnemyTankShield>().TakeDamage(Damage);
+        }
     }
     void Death()
     {
