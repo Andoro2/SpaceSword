@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float m_Speed = 5f,
         xLimit = 9f, zLimitMin = 0f, zLimitMax = 12.5f,
         m_ShootingRate = 0.25f,
-        m_UltLoad = 0f;
+        m_UltLoad = 0f, m_UltLoadOnHit = 0.5f;
 
     public GameObject m_Bullet, m_BulletHolder;
     private GameObject m_ShootPoints, Bullet,
@@ -84,20 +84,23 @@ public class PlayerController : MonoBehaviour
         m_ExpSlider.value = (float)m_CurrentExp / 100f;
         m_UltSlider.value = m_UltLoad;
     }
+    private bool m_UltLaunching = false;
     public void LoadUlt()
     {
-        if (m_UltLoad < 100) m_UltLoad += 0.25f;
+        if (m_UltLoad < 100 && !m_UltLaunching) m_UltLoad += m_UltLoadOnHit;
 
         if (m_UltLoad == 100) m_UltReadyText.SetActive(true);
     }
     IEnumerator LaunchUltimate()
     {
+        m_UltLaunching = true;
+        m_UltLoad = 0;
         CancelInvoke("Shoot");
         m_UltVFX.SetActive(true);
         yield return new WaitForSeconds(m_UltDuration);
         InvokeRepeating("Shoot", 0, m_ShootingRate);
         m_UltVFX.SetActive(false);
-        m_UltLoad = 0;
+        m_UltLaunching = false;
     }
     public void BarrelRoll()
     {

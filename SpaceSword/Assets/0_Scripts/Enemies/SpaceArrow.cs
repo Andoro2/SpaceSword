@@ -78,7 +78,7 @@ public class SpaceArrow : MonoBehaviour
         ShineRingMaterial.SetColor("_EmissionColor", finalEmissionColor);
 
         m_ArrowAnim.SetTrigger("Launchment");
-        Debug.Log("Lanzamiento");
+        //Debug.Log("Lanzamiento");
 
         Color initialEmissionColor = baseEmissionColor * Mathf.LinearToGammaSpace(initialEmissionIntensity);
         ShineRingMaterial.SetColor("_EmissionColor", initialEmissionColor);
